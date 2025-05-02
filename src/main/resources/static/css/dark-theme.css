@@ -1,0 +1,216 @@
+:root {
+    /* Change primary color from purple to white */
+    --bs-body-bg: #121212;
+    --bs-body-color: #f8f9fa;
+    --bs-primary: #ffffff;
+    --bs-primary-rgb: 255, 255, 255; 
+    --bs-link-color: #e0e0e0;
+    --bs-link-hover-color: #ffffff;
+    --bs-secondary-color: #adb5bd;
+    --bs-border-color: #333;
+    --bs-card-bg: #1e1e1e;
+    --bs-card-cap-bg: #252525;
+    --search-result-hover: #333;
+}
+
+body {
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+}
+
+a {
+    color: var(--bs-link-color);
+}
+
+/* Fix for the navbar brand text color */
+.navbar {
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #333;
+}
+
+.navbar-brand {
+    color: var(--bs-body-color) !important;
+}
+
+.navbar-brand i {
+    color: #ff0000 !important; /* Keep YouTube red color for the icon */
+}
+
+.card {
+    background-color: var(--bs-card-bg);
+    border: 1px solid var(--bs-border-color);
+}
+
+.card-title {
+    color: var(--bs-body-color);
+}
+
+.card-text {
+    color: var(--bs-secondary-color);
+}
+
+.video-player {
+    background-color: #000000;
+}
+
+.comment-section {
+    background-color: var(--bs-card-bg);
+    border: 1px solid var(--bs-border-color);
+}
+
+/* Update button styles to white instead of purple */
+.btn-primary {
+    background-color: #333;
+    border-color: #444;
+    color: var(--bs-body-color);
+}
+
+.btn-primary:hover {
+    background-color: #444;
+    border-color: #555;
+    color: #ffffff;
+}
+
+.btn-outline-primary {
+    border-color: #555;
+    color: var(--bs-body-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: #333;
+    border-color: #444;
+    color: #ffffff;
+}
+
+.footer {
+    background-color: #1f1f1f;
+    color: var(--bs-secondary-color);
+}
+
+.list-group-item {
+    background-color: var(--bs-card-bg);
+    color: var(--bs-body-color);
+    border-color: var(--bs-border-color);
+}
+
+.list-group-item:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.list-group-item:hover i {
+    color: #fff !important;
+}
+
+.list-group-item.active {
+    background-color: #444;
+    border-color: #555;
+    color: #ffffff;
+}
+
+.list-group-item.active i {
+    color: #ffffff !important;
+}
+
+.search-container .form-control {
+    background-color: #2d2d2d;
+    border-color: #444;
+    color: var(--bs-body-color);
+}
+
+.search-container .form-control::placeholder {
+    color: var(--bs-secondary-color);
+}
+
+.search-results-dropdown {
+    background-color: var(--bs-card-bg);
+    border-color: #444;
+}
+
+.search-result-item:hover {
+    background-color: var(--search-result-hover);
+}
+
+.search-result-item:hover .search-result-title {
+    color: #ffffff;
+}
+
+.btn-outline-secondary {
+    border-color: var(--bs-secondary-color);
+    color: var(--bs-secondary-color);
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--bs-secondary-color);
+    color: var(--bs-body-bg);
+}
+
+textarea.form-control {
+    background-color: #2d2d2d;
+    border-color: #444;
+    color: var(--bs-body-color);
+}
+
+.sidebar-heading {
+    color: var(--bs-secondary-color);
+}
+
+.comment-item {
+    border-color: var(--bs-border-color);
+}
+
+/* Adjust various text colors */
+.text-muted {
+    color: var(--bs-secondary-color) !important;
+}
+
+/* Video card styles */
+.video-card {
+    background-color: transparent;
+}
+
+.video-title {
+    color: var(--bs-body-color);
+}
+
+.video-channel, .video-metadata, .comment-date {
+    color: var(--bs-secondary-color);
+}
+
+/* Active elements like buttons */
+.btn-primary:active, .btn-primary:focus {
+    background-color: #444 !important;
+    border-color: #555 !important;
+    color: #ffffff !important;
+}
+
+/* Focus styles for accessibility */
+.form-control:focus {
+    border-color: #555;
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
+}
+
+/* Fix for any dropdown items in dark mode */
+.dropdown-item:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Fix for any nav links hover states */
+.nav-link:hover {
+    color: #ffffff !important;
+}
+
+/* Make sure buttons maintain good contrast on hover */
+.btn:hover {
+    color: #ffffff;
+}
+
+/* Add better focus indicators for keyboard navigation */
+.list-group-item:focus, 
+.btn:focus, 
+.nav-link:focus,
+.dropdown-item:focus {
+    outline: 2px solid #ffffff;
+    outline-offset: -2px;
+}

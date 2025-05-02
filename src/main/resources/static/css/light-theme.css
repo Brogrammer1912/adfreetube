@@ -1,0 +1,91 @@
+:root {
+    --bs-body-bg: #ffffff;
+    --bs-body-color: #212529;
+    --bs-primary: #0d6efd;
+    --bs-primary-rgb: 13, 110, 253;
+    --bs-link-color: #0d6efd;
+    --bs-link-hover-color: #0a58ca;
+    --bs-secondary-color: #6c757d;
+    --bs-border-color: #dee2e6;
+    --bs-card-bg: #fff;
+    --bs-card-cap-bg: rgba(0, 0, 0, 0.03);
+    --search-result-hover: #f8f9fa;
+}
+
+body {
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+}
+
+.navbar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.navbar a {
+    color: #000000;
+}
+
+.card {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+}
+
+.card-title {
+    color: #000000;
+}
+
+.card-text {
+    color: #343a40;
+}
+
+.footer {
+    background-color: #f8f9fa;
+    color: #000000;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+input, textarea {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.dark-mode-toggle {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.search-result-item:hover {
+    background-color: var(--search-result-hover);
+}
+
+/* Video card styles specific to light theme */
+.video-card {
+    background-color: transparent;
+}
+
+.video-title {
+    color: #212529;
+}
+
+.video-channel, .video-metadata {
+    color: #6c757d;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: #ffffff;
+}
+
+.sidebar-heading {
+    color: #6c757d;
+}

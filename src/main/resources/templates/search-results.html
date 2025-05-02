@@ -1,0 +1,10 @@
+<!-- fragments/search-results.html -->
+<div id="search-results" th:fragment=""results>
+  <div th:if="${#lists.isEmpty(videos)}" class="p-3 text-center">Nope results found</div>
+  <div th:each="video : ${videos}" class="search-result-item" th:data-video-id="${video.url}">
+    <img th:src="${video.thumbnailUrl}" th:alt="${video.title}" class="search-result-thumbnail">
+    <div class="search-result-info">
+      <div class="search-result-title" th:text="${video.title}"></div>
+    </div>
+  </div>
+</div>
