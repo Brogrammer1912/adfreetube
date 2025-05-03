@@ -173,18 +173,24 @@
       <div class="row g-4" id="videos-container">
         <!-- Video cards -->
         <div th:each="video : ${videos}" class="col-sm-6 col-md-4 col-lg-3">
-          <div class="card h-100 shadow-sm border-0 rounded-4"
-               hx:get="@{/youtube/video(id=${video.id}, title=${video.title})}"
-               hx-target="#video-player-container"
-               hx-trigger="click"
-               hx-push-url="true"
-               hx-swap="innerHTML"
-               hx-on::after-request="
-                            document.getElementById('video-player-container').classList.remove('d-none');
-                            document.getElementById('hero-section').classList.add('compact-mode');
-                            document.getElementById('video-suggestions').classList.add('d-none');
-                            document.getElementById('back-to-search').classList.remove('d-none');
-                            window.scrollTo(0, 0);">
+            <div class="card h-100 shadow-sm border-0 rounded-4"
+                 hx:get="@{/youtube/video(id=${video.id}, title=${video.title})}"
+                 hx-target="#video-player-container"
+                 hx-trigger="click"
+                 hx-push-url="true"
+                 hx-swap="innerHTML"
+                 hx-on::after-request="
+                             const playerContainer = document.getElementById('video-player-container');
+                             const heroSection = document.getElementById('hero-section');
+                             const videoSuggestions = document.getElementById('video-suggestions');
+                             const backButton = document.getElementById('back-to-search');
+
+                             if (playerContainer) playerContainer.classList.remove('d-none');
+                             if (heroSection) heroSection.classList.add('compact-mode');
+                             if (videoSuggestions) videoSuggestions.classList.add('d-none');
+                             if (backButton) backButton.classList.remove('d-none');
+
+                             playerContainer.scrollIntoView({behavior: 'smooth'});">
             <div class="video-thumbnail">
               <img th:src="${video.thumbnail}" class="card-img-top" th:alt="${video.title}">
               <span class="video-duration" th:text="${video.duration}"></span>
