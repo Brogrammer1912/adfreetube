@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     function enableDarkMode() {
-        themeStylesheet.setAttribute('href', 'css/dark-theme.css');
+        themeStylesheet.setAttribute('href', '/css/dark-theme.css');
         themeButton.innerHTML = '<i class="bi bi-sun-fill"></i>';
         document.body.classList.add('dark-mode');
         document.body.classList.remove('light-mode');
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function enableLightMode() {
-        themeStylesheet.setAttribute('href', 'css/light-theme.css');
+        themeStylesheet.setAttribute('href', '/css/light-theme.css');
         themeButton.innerHTML = '<i class="bi bi-moon-fill"></i>';
         document.body.classList.add('light-mode');
         document.body.classList.remove('dark-mode');

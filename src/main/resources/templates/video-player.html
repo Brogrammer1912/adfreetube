@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="videoPlayer" class="fade-in">
+  <div class="ratio ratio-16x9 video-player-wrapper">
+    <iframe id="youtube-player" class="rounded shadow"
+            th:src="'https://www.youtube.com/embed/' + ${videoId} + '?autoplay=1&rel=0'"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+    </iframe>
+  </div>
+  <div class="video-info mt-3">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2 id="video-title" th:text="${title}"></h2>
+      <button id="close-video-btn" class="btn btn-outline-secondary btn-sm"
+              hx-get="/"
+              hx-target="body"
+              hx-push-url="true">
+        <i class="bi bi-x-lg"></i> Close
+      </button>
+    </div>
+    <!--<div class="d-flex justify-content-between align-items-center">
+      <div>
+        <span id="video-views" class="text-muted" th:text="${video.views}"></span>
+        <span id="video-date" class="text-muted ms-2" th:text="${video.publishedAt}"></span>
+      </div>
+      <div>
+        <button class="btn btn-outline-primary btn-sm">
+          <i class="bi bi-hand-thumbs-up me-1"></i> Like
+        </button>
+        <button class="btn btn-outline-primary btn-sm ms-2">
+          <i class="bi bi-share me-1"></i> Share
+        </button>
+      </div>
+    </div>-->
+    <hr>
+    <!--<p id="video-description" th:text="${video.description}"></p>-->
+
+    <!-- Comments section -->
+    <!--<div id="comments-container" class="mt-4">
+      <h4>Comments</h4>
+      <div class="mb-3">
+                    <textarea class="form-control" id="comment-input" rows="2" placeholder="Add a comment..."
+                              hx-post="'/video/' + ${video.id} + '/comment'"
+                              hx-trigger="keyup[keyCode==13]"
+                              hx-target="#comments-list"
+                              hx-swap="afterbegin"></textarea>
+        <button class="btn btn-primary mt-2" id="comment-submit"
+                hx-post="'/video/' + ${video.id} + '/comment'"
+                hx-include="#comment-input"
+                hx-target="#comments-list"
+                hx-swap="afterbegin">Comment</button>
+      </div>
+      <div id="comments-list">
+        <div th:each="comment : ${comments}" class="comment-item">
+          <div class="d-flex">
+            <img th:src="${comment.authorAvatar}" alt="Avatar" class="me-3 rounded-circle" width="40" height="40">
+            <div>
+              <div class="comment-author" th:text="${comment.authorName}"></div>
+              <div class="comment-date" th:text="${#temporals.format(comment.createdAt, 'dd MMM yyyy')}"></div>
+              <div class="mt-2" th:text="${comment.text}"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>-->
+  </div>
+</div>
+</body>
+</html>
+<!-- video-player.html -->
+<!--
+<div id="video-player-container" class="mt-4" th:fragment="player">
+  <div class="ratio ratio-16x9 video-player-wrapper">
+    <iframe class="rounded shadow"
+            th:src="'https://www.youtube.com/embed/' + ${videoId} + '?autoplay=1&rel=0'"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+    </iframe>
+  </div>
+  <div class="video-info mt-3">
+    <h2 th:text="${title}"></h2>
+  </div>
+</div>-->

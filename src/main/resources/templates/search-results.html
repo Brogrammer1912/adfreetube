@@ -1,10 +1,54 @@
-<!-- fragments/search-results.html -->
-<div id="search-results" th:fragment=""results>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="searchResults" class="fade-in">
+  <!-- Remove d-none class to show results -->
+  <script>document.getElementById('search-results').classList.remove('d-none');</script>
+
+  <div class="search-results-header d-flex justify-content-between align-items-center p-2">
+    <span class="search-results-count" th:text="${count} + ' results'"></span>
+    <button class="btn-close btn-sm" id="close-search-results"
+            onclick="document.getElementById('search-results').classList.add('d-none');"></button>
+  </div>
+  <div class="search-results-list">
+    <div th:if="${results.isEmpty()}" class="search-no-results">
+      No results found for "<span th:text="${query}"></span>"
+    </div>
+
+    <div th:each="video : ${results}" class="search-result-item"
+         hx:get="@{/youtube/video(id=${video.id}, title=${video.title})}"
+         hx-target="#video-player-container"
+         hx-trigger="click"
+         hx-push-url="true"
+         hx-swap="innerHTML"
+         hx-on::after-request="document.getElementById('video-player-container').classList.remove('d-none'); document.getElementById('video-suggestions').classList.add('d-none'); document.getElementById('search-results').classList.add('d-none'); window.scrollTo(0, 0);">
+      <div class="d-flex">
+        <!--<img th:src="${video.thumbnail}" th:alt="${video.title}" class="search-result-thumbnail">-->
+        <div class="ms-3 flex-grow-1">
+          <div class="search-result-title" th:text="${video.title}"></div>
+          <div class="search-result-info">
+            <span th:text="${video.views}"></span>
+            <span>•</span>
+            <span th:text="${video.chanel}"></span>
+            <!--<span th:text="${video.publishedAt}"></span>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+<!--
+<div id="search-results" th:fragment="results">
   <div th:if="${#lists.isEmpty(videos)}" class="p-3 text-center">Nope results found</div>
-  <div th:each="video : ${videos}" class="search-result-item" th:data-video-id="${video.url}">
+  <div th:each="video : ${videos}" class="search-result-item" th:data-video-id="${video.url}"
+       hx:get="@{/youtube/play(id=${video.url}, title=${video.title})}"
+  >
     <img th:src="${video.thumbnailUrl}" th:alt="${video.title}" class="search-result-thumbnail">
     <div class="search-result-info">
       <div class="search-result-title" th:text="${video.title}"></div>
     </div>
   </div>
-</div>
+</div>-->
