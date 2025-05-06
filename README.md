@@ -2,7 +2,12 @@
 
 A distraction-free YouTube experience that puts you in control of your viewing habits.
 
-![Ad-Free Tube](https://github.com/user-attachments/assets/b5f3c3a9-25af-4bf4-9473-bb5086bb70ae) <!-- Add your screenshot here -->
+![Ad-Free Tube](https://github.com/user-attachments/assets/b5f3c3a9-25af-4bf4-9473-bb5086bb70ae)
+<img width="1512" alt="Image" src="https://github.com/user-attachments/assets/f6639461-acac-443e-878c-9b3de9ebe428" />
+<img width="1512" alt="Image" src="https://github.com/user-attachments/assets/ee9cbbcc-8b90-4160-9273-6812231f5c7f" />
+<img width="1512" alt="Image" src="https://github.com/user-attachments/assets/24ff9368-9c29-4768-b796-0b4f135848cd" />
+<img width="1512" alt="Image" src="https://github.com/user-attachments/assets/4d63dd1f-ea14-4904-9d5b-9539e887fcdd" />
+<img width="1512" alt="Image" src="https://github.com/user-attachments/assets/f8ec3ce9-a72e-4d7d-b09a-1206f536c36f" />
 
 https://github.com/user-attachments/assets/315f427c-db18-4d77-932d-11a3a5d8cf68
 
