@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - AddFreeTube</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .error-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+        }
+        .error-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .error-icon {
+            color: #dc3545;
+            font-size: 2.5rem;
+            margin-right: 15px;
+        }
+        h1 {
+            margin: 0;
+            color: #dc3545;
+        }
+        .error-details {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .help-text {
+            margin-top: 20px;
+        }
+        .back-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.2s;
+        }
+        .back-button:hover {
+            background-color: #0069d9;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-header">
+            <div class="error-icon">⚠️</div>
+            <h1>Oops! Something went wrong</h1>
+        </div>
+
+        <p>We're sorry, but we encountered an unexpected issue while processing your request.</p>
+
+        <div class="error-details">
+            <p><strong>Error:</strong> <span th:text="${error}">Error Type</span></p>
+            <p><strong>Status:</strong> <span th:text="${status}">Status Code</span></p>
+            <p><strong>Message:</strong> <span th:text="${message}">Error Message</span></p>
+            <p><strong>Time:</strong> <span th:text="${timestamp}">Timestamp</span></p>
+        </div>
+
+        <div class="help-text">
+            <p>Please try again later or contact support if the problem persists.</p>
+        </div>
+
+        <button class="back-button" onclick="window.history.back()">Go Back</button>
+    </div>
+</body>
+</html>
