@@ -105,6 +105,23 @@
     .search-results-dropdown, .list-group-item {
       transition: all 0.2s ease-in-out;
     }
+    .arrow-icon {
+      cursor: pointer;
+      animation: bounce 2s infinite;
+      display: inline-block;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(5px);
+      }
+      60% {
+        transform: translateY(3px);
+      }
+    }
   </style>
 </head>
 <body>
@@ -170,7 +187,10 @@
 
     <!-- Recent searches or recommendations (optional) -->
     <div id="video-suggestions" class="mt-5">
-      <h3 class="mb-4 text-center">Suggested</h3>
+      <h3 class="mb-4 text-center">
+        Suggested
+        <i class="bi bi-chevron-down ms-2 arrow-icon" onclick="document.getElementById('videos-container').scrollIntoView({behavior: 'smooth'})"></i>
+      </h3>
       <div class="row g-4" id="videos-container">
         <!-- Video cards -->
         <div th:each="video : ${videos}" class="col-sm-6 col-md-4 col-lg-3">
