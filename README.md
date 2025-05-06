@@ -2,7 +2,9 @@
 
 A distraction-free YouTube experience that puts you in control of your viewing habits.
 
-![Ad-Free Tube](screenshot.png) <!-- Add your screenshot here -->
+![Ad-Free Tube](https://github.com/user-attachments/assets/b5f3c3a9-25af-4bf4-9473-bb5086bb70ae) <!-- Add your screenshot here -->
+
+https://github.com/user-attachments/assets/315f427c-db18-4d77-932d-11a3a5d8cf68
 
 ## ✨ Features
 
