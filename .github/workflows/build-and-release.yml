@@ -84,5 +84,7 @@ jobs:
         with:
           release_id: ${{ steps.create_release.outputs.id }}
           asset_path: target/*.jar
-          asset_name: app-${{ env.version }}.jar
+          asset_name: addfreetube.jar
           asset_content_type: application/java-archive
+          
+          
