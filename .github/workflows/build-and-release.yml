@@ -71,7 +71,15 @@ jobs:
         with:
           tag_name: v${{ github.run_number }}
           name: "Release v${{ github.run_number }}"
-          body: "Automated release for build #${{ github.run_number }}"
+          body: |
+            Automated release for build #${{ github.run_number }}.
+            
+            ## Installation Instructions
+            1. Download the JAR file to your computer
+            2. Open command prompt/terminal
+            3. Run the application with: `java -jar addfreetube.jar`
+            
+            System requirement: Java 24 or higher
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
 
