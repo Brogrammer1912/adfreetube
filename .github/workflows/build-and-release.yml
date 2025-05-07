@@ -1,0 +1,83 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  # Job for pull request Maven builds
+  build-for-pr:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 24
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin' # Use the Eclipse Temurin JDK
+          java-version: '24'
+
+      - name: Install dependencies and build
+        run: mvn clean install
+
+  # Job for release builds and publishing artifacts
+  release:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 24
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '24'
+
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-m2-
+
+      - name: Build project
+        run: mvn clean package -DskipTests
+
+      - name: Determine version
+        id: get_version
+        run: |
+          VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          echo "version=$VERSION" >> $GITHUB_ENV
+
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ env.version }}
+          release_name: Release v${{ env.version }}
+          body: |
+            Automated release of version v${{ env.version }}.
+          draft: false
+          prerelease: false
+
+      - name: Upload JAR to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          release_id: ${{ steps.create_release.outputs.id }}
+          asset_path: target/*.jar
+          asset_name: app-${{ env.version }}.jar
+          asset_content_type: application/java-archive
