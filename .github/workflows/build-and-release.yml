@@ -80,9 +80,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          release_id: ${{ steps.create_release.outputs.id }}
-          asset_path: target/*.jar
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: target/addfreetube-0.0.1.jar  # Update the JAR name as needed
           asset_name: addfreetube.jar
           asset_content_type: application/java-archive
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          
