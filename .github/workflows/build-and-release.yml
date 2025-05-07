@@ -1,5 +1,10 @@
 name: Build and Release
 
+permissions:
+  contents: write
+  packages: write
+  deployments: write
+  
 on:
   push:
     branches:
@@ -7,7 +12,7 @@ on:
   pull_request:
     branches:
       - main
-
+  
 jobs:
   # Job for pull request Maven builds
   build-for-pr:
