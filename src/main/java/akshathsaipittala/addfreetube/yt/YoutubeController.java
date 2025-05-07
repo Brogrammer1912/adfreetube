@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2025 Akshath Sai Pittala
+ * All rights reserved.
+ */
 package akshathsaipittala.addfreetube.yt;
 
 import lombok.RequiredArgsConstructor;
@@ -39,7 +43,7 @@ public class YoutubeController {
             model.addAttribute("preloadVideo", true);
             // Optionally, add the list of videos for the sidebar/home
             //log.info("Videos: {}", videos);
-            return "index2";
+            return "index";
         }
     }
 

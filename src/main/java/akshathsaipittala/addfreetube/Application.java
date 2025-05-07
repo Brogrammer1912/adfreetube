@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2025 Akshath Sai Pittala
+ * All rights reserved.
+ */
 package akshathsaipittala.addfreetube;
 
 import org.springframework.boot.SpringApplication;

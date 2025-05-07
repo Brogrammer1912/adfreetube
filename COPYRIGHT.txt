@@ -1,0 +1,5 @@
+Copyright (c) 2024 Akshath Sai Pittala
+All rights reserved.
+
+This software and associated documentation files are protected by copyright law.
+Unauthorized reproduction, distribution, or modification is prohibited.
