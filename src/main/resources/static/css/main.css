@@ -151,6 +151,25 @@ body.dark-mode {
     background-color: #000;
 }
 
+/* Card hover effects for suggested videos */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    border-left: 3px solid var(--bs-primary) !important;
+}
+
+.card:hover .video-thumbnail img {
+  transform: scale(1.05);
+}
+
+.card:hover .card-title {
+  color: var(--bs-primary);
+}
+
 /* Video cards */
 .video-card {
     cursor: pointer;
@@ -165,6 +184,10 @@ body.dark-mode {
     position: relative;
     border-radius: 0.375rem;
     overflow: hidden;
+}
+
+.video-thumbnail img {
+    transition: transform 0.3s ease;
 }
 
 .video-duration {
@@ -195,15 +218,6 @@ body.dark-mode {
 .video-metadata {
     font-size: 0.875rem;
     color: var(--bs-secondary-color);
-}
-
-/* Sidebar */
-.sidebar {
-    position: sticky;
-    top: 56px;
-    height: calc(100vh - 56px);
-    padding-top: 1.5rem;
-    overflow-y: auto;
 }
 
 /* Make sure the app container takes full height */
