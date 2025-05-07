@@ -84,5 +84,5 @@ jobs:
           asset_path: target/*.jar
           asset_name: addfreetube.jar
           asset_content_type: application/java-archive
-          
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
           
