@@ -10,15 +10,23 @@
 	</parent>
 	<groupId>akshathsaipittala</groupId>
 	<artifactId>addfreetube</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
+	<packaging>jar</packaging>
 	<name>addfreetube</name>
 	<description>Add Free YouTube Web App</description>
-	<url/>
+	<url>https://github.com/AkshathSai/addfreetube</url>
 	<licenses>
-		<license/>
+		<license>
+			<name>MIT License</name>
+			<url>https://opensource.org/licenses/MIT</url>
+		</license>
 	</licenses>
 	<developers>
-		<developer/>
+		<developer>
+			<id>AkshathSai</id>
+			<name>Akshath Sai Pittala</name>
+			<email>f4i9b0l35@mozmail.com</email>
+		</developer>
 	</developers>
 	<scm>
 		<connection/>
