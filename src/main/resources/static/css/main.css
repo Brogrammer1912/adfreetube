@@ -68,7 +68,7 @@ body.light-mode {
 
 /* Dark theme styles */
 body.dark-mode {
-    background-color: #181818;
+    background-color: #000000;
     color: #ffffff;
 }
 

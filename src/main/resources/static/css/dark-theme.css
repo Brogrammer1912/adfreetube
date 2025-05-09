@@ -24,7 +24,7 @@ a {
 
 /* Fix for the navbar brand text color */
 .navbar {
-    background-color: #1a1a1a;
+    background-color: #000000;
     border-bottom: 1px solid #333;
 }
 
@@ -83,7 +83,7 @@ a {
 }
 
 .footer {
-    background-color: #1f1f1f;
+    background-color: #000000;
     color: var(--bs-secondary-color);
 }
 
