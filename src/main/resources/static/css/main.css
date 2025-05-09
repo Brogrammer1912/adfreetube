@@ -141,7 +141,7 @@ body.dark-mode {
 /* Video player styling */
 .video-player-wrapper {
     background-color: #000;
-    border-radius: 0.375rem;
+    /*border-radius: 0.375rem;*/
     overflow: hidden;
 }
 

@@ -3,7 +3,7 @@
 <body>
 <div th:fragment="videoPlayer" class="fade-in">
   <div class="ratio ratio-16x9 video-player-wrapper">
-    <iframe id="youtube-player" class="rounded shadow"
+    <iframe id="youtube-player" class="shadow"
             th:src="'https://www.youtube.com/embed/' + ${videoId} + '?autoplay=1&rel=0'"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -65,6 +65,7 @@
         </div>
       </div>
     </div>-->
+</div>
 </div>
 </body>
 </html>
