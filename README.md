@@ -36,6 +36,7 @@ Ad-Free Tube was created to help you reclaim your attention and time. Instead of
 - Thymeleaf + HTMX
 - Bootstrap 5.3.5
 - Maven
+- [YouTube IFrame API Docs](https://developers.google.com/youtube/youtube_player_demo)
 
 ## 🏃‍♂️ Getting Started
 

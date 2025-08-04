@@ -17,6 +17,15 @@ import org.springframework.web.bind.annotation.*;
 public class YoutubeController {
 
     final YoutubeCrawler youtubeCrawler;
+    final TimestampService timestampService;
+
+    record TimestampRequest(String videoId, Integer timestamp) {}
+
+    @ResponseBody
+    @PostMapping("/timestamp")
+    public void saveTimestamp(@RequestBody TimestampRequest request) {
+        timestampService.saveTimestamp(request.videoId(), request.timestamp());
+    }
 
     @GetMapping("/search")
     public String search(@RequestParam String query, Model model) {
@@ -34,6 +43,8 @@ public class YoutubeController {
                            @RequestHeader(value = "HX-Request", required = false) String hxRequest) {
         model.addAttribute("videoId", videoId);
         model.addAttribute("title", title);
+        Integer timestamp = timestampService.getTimestamp(videoId);
+        model.addAttribute("timestamp", timestamp);
 
         if ("true".equals(hxRequest)) {
             // HTMX request: return only the fragment
@@ -41,8 +52,6 @@ public class YoutubeController {
         } else {
             // Full page load: return the main page, preload video info
             model.addAttribute("preloadVideo", true);
-            // Optionally, add the list of videos for the sidebar/home
-            //log.info("Videos: {}", videos);
             return "index";
         }
     }

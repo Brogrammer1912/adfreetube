@@ -20,7 +20,7 @@ public class HomeController {
     @GetMapping("/")
     @Cacheable("suggested")
     public String home(Model model) {
-        var videos = youtubeCrawler.getVideos("trailer");
+        var videos = youtubeCrawler.suggestedVideos("trailer");
         model.addAttribute("videos", videos);
         model.addAttribute("preloadVideo", false);
         return "index";

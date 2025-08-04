@@ -4,21 +4,21 @@
 <div th:fragment="videoPlayer" class="fade-in">
   <div class="ratio ratio-16x9 video-player-wrapper">
     <iframe id="youtube-player" class="shadow"
-            th:src="'https://www.youtube.com/embed/' + ${videoId} + '?autoplay=1&rel=0'"
+            th:src="'https://www.youtube.com/embed/' + ${videoId} + '?autoplay=1&start='+ ${timestamp} +'&rel=0&enablejsapi=1'"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
     </iframe>
   </div>
+
+  <!-- Add a small indicator that will show when timestamp is saved -->
+  <div class="position-absolute top-0 end-0 m-3">
+    <span id="timestamp-saved" class="badge bg-success d-none">Timestamp saved</span>
+  </div>
+
   <div class="video-info mt-3">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h2 id="video-title" th:text="${title}"></h2>
-      <!--<button id="close-video-btn" class="btn btn-outline-secondary btn-sm"
-              hx-get="/"
-              hx-target="body"
-              hx-push-url="true">
-        <i class="bi bi-x-lg"></i> Close
-      </button>-->
     </div>
     <!--<div class="d-flex justify-content-between align-items-center">
       <div>
@@ -66,21 +66,119 @@
       </div>
     </div>-->
 </div>
+
+  <script th:inline="javascript">
+    let player;
+    let videoId = /*[[${videoId}]]*/;
+    let saveInterval;
+    let lastSavedTime = 0;
+    const SAVE_INTERVAL_MS = 2000; // Save every 2 seconds instead of 5
+
+    // Initialize player when API is ready
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('youtube-player', {
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange,
+          'onPlaybackRateChange': saveCurrentTimestamp,
+          'onApiChange': onPlayerReady
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      // More frequent timestamp saving
+      saveInterval = setInterval(saveCurrentTimestamp, SAVE_INTERVAL_MS);
+
+      // Add seeking event listener (when user manually seeks in video)
+      player.addEventListener('onStateChange', function(e) {
+        if (e.data === YT.PlayerState.PLAYING) {
+          // Check if seeking occurred by comparing with stored time
+          const storedTime = parseInt(localStorage.getItem(`yt_timestamp_${videoId}`)) || 0;
+          const currentTime = Math.floor(player.getCurrentTime());
+          if (Math.abs(currentTime - storedTime) > 3) {
+            saveCurrentTimestamp();
+          }
+        }
+      });
+    }
+
+    function onPlayerStateChange(event) {
+      // Save timestamp on pause, buffering, or ending
+      if (event.data === YT.PlayerState.PAUSED ||
+          event.data === YT.PlayerState.ENDED ||
+          event.data === YT.PlayerState.BUFFERING) {
+        saveCurrentTimestamp();
+      }
+    }
+
+    function saveCurrentTimestamp() {
+      if (!player || !player.getCurrentTime) return;
+
+      const currentTime = Math.floor(player.getCurrentTime());
+
+      // Save to localStorage immediately for instant local recall
+      localStorage.setItem(`yt_timestamp_${videoId}`, currentTime);
+
+      // Only send to server if there's a reasonable change to avoid flooding
+      if (Math.abs(currentTime - lastSavedTime) >= 0.5) {  // Reduced threshold to 0.5 seconds
+        lastSavedTime = currentTime;
+
+        // Use the Beacon API for more reliable saves, especially on page unload
+        const data = JSON.stringify({
+          videoId: videoId,
+          timestamp: currentTime
+        });
+
+        // Try beacon API first (works well during page unload)
+        if (navigator.sendBeacon) {
+          const blob = new Blob([data], {type: 'application/json'});
+          const success = navigator.sendBeacon('/youtube/timestamp', blob);
+
+          if (success) {
+            showSavedIndicator();
+            return;
+          }
+        }
+
+        // Fall back to fetch if beacon not available/successful
+        fetch('/youtube/timestamp', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: data
+        })
+        .then(() => showSavedIndicator())
+        .catch(error => {
+          console.error('Error saving timestamp:', error);
+          // Queue for retry
+          setTimeout(() => saveCurrentTimestamp(), 3000);
+        });
+      }
+    }
+
+    function showSavedIndicator() {
+      const savedIndicator = document.getElementById('timestamp-saved');
+      savedIndicator.classList.remove('d-none');
+      setTimeout(() => {
+        savedIndicator.classList.add('d-none');
+      }, 1000);  // Shorter display time
+    }
+
+    // Additional event listeners for better coverage
+    document.addEventListener('visibilitychange', function() {
+      if (document.visibilityState === 'hidden') {
+        saveCurrentTimestamp(); // Save when tab is hidden
+      }
+    });
+
+    // Clean up when leaving the page - use Beacon API for more reliable delivery
+    window.addEventListener('beforeunload', function() {
+      clearInterval(saveInterval);
+      saveCurrentTimestamp();
+    });
+  </script>
 </div>
 </body>
 </html>
-<!-- video-player.html -->
-<!--
-<div id="video-player-container" class="mt-4" th:fragment="player">
-  <div class="ratio ratio-16x9 video-player-wrapper">
-    <iframe class="rounded shadow"
-            th:src="'https://www.youtube.com/embed/' + ${videoId} + '?autoplay=1&rel=0'"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-    </iframe>
-  </div>
-  <div class="video-info mt-3">
-    <h2 th:text="${title}"></h2>
-  </div>
-</div>-->

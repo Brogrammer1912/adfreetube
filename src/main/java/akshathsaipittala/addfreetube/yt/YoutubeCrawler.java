@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 @Service
 public class YoutubeCrawler {
 
-    private static final Pattern polymerInitialDataRegex = Pattern.compile("(window\\[\"ytInitialData\"]|var ytInitialData)\\s*=\\s*(.*);");
+    private static final Pattern POLYMER_INITIAL_DATA_REGEX = Pattern.compile("(window\\[\"ytInitialData\"]|var ytInitialData)\\s*=\\s*(.*);");
 
     public List<YouTubeResponse> searchVideos(String searchQuery) {
         Content content = crawlSearchResults(searchQuery);
@@ -51,7 +51,7 @@ public class YoutubeCrawler {
     }
 
 
-    public List<YouTubeResponse> getVideos(String searchQuery) {
+    public List<YouTubeResponse> suggestedVideos(String searchQuery) {
         Content content = crawlSearchResults(searchQuery);
         List<Content> contentList = new ArrayList<>(
                 content
@@ -82,7 +82,7 @@ public class YoutubeCrawler {
         return retryService.retry(() -> {
             Document document = Jsoup.connect("https://www.youtube.com/results?search_query=" + searchQuery)
                     .get();
-            Matcher matcher = polymerInitialDataRegex.matcher(document.html());
+            Matcher matcher = POLYMER_INITIAL_DATA_REGEX.matcher(document.html());
             if (!matcher.find()) {
                 log.warn("Failed to match ytInitialData JSON object");
             }
