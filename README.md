@@ -1,4 +1,5 @@
-# Ad-Free Tube
+# Ad-Free Tube **🚀 [Download Latest Release](https://github.com/AkshathSai/addfreetube/releases/latest/download/addfreetube.jar) | 📖 [Read the Story](https://medium.com/@akshathsai.pittala/i-built-my-own-ad-free-youtube-because-i-was-tired-of-being-the-product-4fae2ac87c7b)**
+
 
 A distraction-free YouTube experience that puts you in control of your viewing habits.
 
