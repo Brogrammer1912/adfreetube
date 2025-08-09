@@ -79,7 +79,7 @@ Ad-Free Tube is fully responsive and works great on:
 
 ## 📝 License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source and available under the [Apache 2](LICENSE).
 
 ## 👨‍💻 Developer
 
