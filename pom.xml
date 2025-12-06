@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.5</version>
+		<version>4.0.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>akshathsaipittala</groupId>
@@ -40,7 +40,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter-webmvc</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -54,7 +54,7 @@
 		<dependency>
 			<groupId>io.github.wimdeblauwe</groupId>
 			<artifactId>htmx-spring-boot-thymeleaf</artifactId>
-			<version>4.0.1</version>
+			<version>5.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jsoup</groupId>
@@ -65,7 +65,7 @@
 		<!-- WebJARs -->
 		<dependency>
 			<groupId>org.webjars</groupId>
-			<artifactId>webjars-locator-core</artifactId>
+			<artifactId>webjars-locator-lite</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
