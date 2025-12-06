@@ -1,4 +1,4 @@
-# Ad-Free Tube **🚀 [Download Latest Release](https://github.com/AkshathSai/addfreetube/releases/latest/download/addfreetube.jar) | 📖 [Read the Story](https://medium.com/@akshathsai.pittala/i-built-my-own-ad-free-youtube-because-i-was-tired-of-being-the-product-4fae2ac87c7b)**
+# Ad-Free Tube **🚀 [Download Latest Release](https://github.com/Brogrammer1912/addfreetube/releases/latest/download/addfreetube.jar) | 📖 [Read the Story](https://medium.com/@brogrammer1912/i-built-my-own-ad-free-youtube-because-i-was-tired-of-being-the-product-4fae2ac87c7b)**
 
 
 A distraction-free YouTube experience that puts you in control of your viewing habits.
@@ -48,7 +48,7 @@ Ad-Free Tube was created to help you reclaim your attention and time. Instead of
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/addfreetube.git
+git clone https://github.com/Brogrammer1912/addfreetube.git
 
 # Navigate to project directory
 cd addfreetube
@@ -81,12 +81,6 @@ Ad-Free Tube is fully responsive and works great on:
 
 This project is open source and available under the [Apache 2](LICENSE).
 
-## 👨‍💻 Developer
-
-Developed by [Akshath Sai Pittala](https://github.com/AkshathSai)
-
 ---
 
 ⭐ **If you find this useful, please share it on your social networks!** ⭐
-
-[Twitter](https://twitter.com/share?url=https://github.com/yourusername/addfreetube) | [Facebook](https://www.facebook.com/sharer/sharer.php?u=https://github.com/yourusername/addfreetube) | [LinkedIn](https://www.linkedin.com/shareArticle?mini=true&url=https://github.com/yourusername/addfreetube)
