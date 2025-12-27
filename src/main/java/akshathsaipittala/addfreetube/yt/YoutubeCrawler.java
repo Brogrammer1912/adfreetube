@@ -25,6 +25,7 @@ import java.util.stream.Collectors;
 public class YoutubeCrawler {
 
     private static final Pattern polymerInitialDataRegex = Pattern.compile("(window\\[\"ytInitialData\"]|var ytInitialData)\\s*=\\s*(.*);");
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     public List<YouTubeResponse> searchVideos(String searchQuery) {
         Content content = crawlSearchResults(searchQuery);
@@ -87,10 +88,9 @@ public class YoutubeCrawler {
                 log.warn("Failed to match ytInitialData JSON object");
             }
 
-            ObjectMapper objectMapper = new ObjectMapper();
-            JsonNode jsonNode = objectMapper.readTree(matcher.group(2));
+            JsonNode jsonNode = OBJECT_MAPPER.readTree(matcher.group(2));
             JsonNode contents = jsonNode.get("contents");
-            return Objects.requireNonNull(objectMapper.treeToValue(contents, Content.class));
+            return Objects.requireNonNull(OBJECT_MAPPER.treeToValue(contents, Content.class));
         });
     }
 
